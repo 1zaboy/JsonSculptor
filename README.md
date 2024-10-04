@@ -7,6 +7,11 @@ The JsonSculptorExtension is a C# static extension class that provides functiona
 - JSON Mapping: Replaces placeholders in a given schema string with actual values from a JSON object.
 - Breadcrumb Navigation: Allows navigating the JSON structure using dot notation to specify the path to the value within the JSON.
 
+## Benchmark
+| Method           | Mean     | Error   | StdDev  |
+|----------------- |---------:|--------:|--------:|
+| BenchmarkMapJson | 966.8 ns | 8.30 ns | 6.93 ns |
+
 ## Usage
 **Method**: MapJson
 
@@ -35,13 +40,6 @@ string result = schema.MapJson(json);
 // Result: "Name: John, Age: 30"
 ```
 In this example, the schema contains placeholders like {{$json.person.name}}. The MapJson method replaces these placeholders with actual values from the json string (in this case, "John" and "30").
-
-## Error Handling
-The method will throw exceptions in the following cases:
-
-- If no matches are found in the schema string, an exception "Cannot find matches" is thrown.
-- If the data string is not valid JSON, an exception "data is not json string" is thrown.
-- If any breadcrumbs do not exist in the JSON object, an exception "Incorrect breadcrumbs" is thrown.
 
 ## Method Details
 **MapJson(this string data, string schema)**

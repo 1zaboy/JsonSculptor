@@ -10,7 +10,15 @@ public class JsonSculptorBenchmark
     [GlobalSetup]
     public void Setup()
     {
-        data = "{\"name\": \"John\", \"age\": 30, \"address\": {\"city\": \"New York\"}}";
+        data = """
+               {
+                   "name": false, 
+                   "age": 30, 
+                   "address": {
+                       "city": "New York"
+                   }
+               }
+               """;
         schema = "User Name: {{$json.name}}, Age: {{$json.age}}, City: {{$json.address.city}}";
     }
 
